@@ -17,8 +17,8 @@ class QuotesManagmentTest extends TestCase
      */
     public function list_of_quotes_retrieved()
     {
-        $this->withExceptionHandling();
         Quotes::factory(3)->make();
+
         $response = $this->get(route('quotes.index'));
 
         $response->assertOk();
@@ -27,10 +27,11 @@ class QuotesManagmentTest extends TestCase
 
         $response->assertViewIs('quotes.index');
 
-        // check if exista text in DOM
+        // check if exists text in DOM
         $response->assertSeeText('List of quotes');
 
-
+        // check if exists table in DOM
+        $response->assertSee('table');
 
         $response->assertViewHas('quotes', $quotes);
     }

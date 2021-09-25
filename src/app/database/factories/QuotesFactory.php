@@ -23,8 +23,8 @@ class QuotesFactory extends Factory
     public function definition()
     {
         return [
-            'title' => Str::random(random_int(50, 100)),
-            'content' => Str::random(random_int(250, 300)),
+            'title' => $this->faker->realText(100),
+            'content' => $this->faker->text(random_int(255, 300)),
         ];
     }
 }
