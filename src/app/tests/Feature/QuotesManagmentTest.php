@@ -26,6 +26,12 @@ class QuotesManagmentTest extends TestCase
         $quotes = Quotes::all();
 
         $response->assertViewIs('quotes.index');
+
+        // check if exista text in DOM
+        $response->assertSeeText('List of quotes');
+
+
+
         $response->assertViewHas('quotes', $quotes);
     }
 }
